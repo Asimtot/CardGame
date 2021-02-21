@@ -50,8 +50,36 @@ public class ScoreCard
     
     public int[] getWinners()
     {
+        
+        int maxScore;
+        int winnerAmount;
+        int count;
 
-        return null;
+        for(int i: scores)
+        {
+            if(i>= maxScore)
+            {
+                maxScore= i;
+            }
+        }
+        for(int i: scores)
+        {
+            if(i== maxScore)
+                winnerAmount++;
+        }
+        int[] winners= new int[winnerAmount];
+
+        for(int i: scores)
+        {
+            if(i== maxScore)
+            {
+                winners[count]= count;
+                count++;
+            }
+                
+
+        }
+
     }
     
 } 
