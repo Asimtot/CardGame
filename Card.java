@@ -1,7 +1,7 @@
 package cardgame;
 
 /**
- * Card - a single playing card- Değişiklik denemesi (Emre)
+ * Card - a single playing card
  * @author
  * @version
  */
@@ -31,7 +31,7 @@ public class Card
     
     public int getFaceValue()
     {
-        return cardNo % NOOFCARDSINSUIT;
+        return cardNo;
     }
     
     public int getSuit()
@@ -65,6 +65,7 @@ public class Card
             value2=13;
         
 
-        return value2- value1;
+        return value2 - value1;
     }
+
 }

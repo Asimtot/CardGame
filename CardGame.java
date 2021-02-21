@@ -1,5 +1,4 @@
 package cardgame;
-
 import java.util.ArrayList;
 
 // Cardgame
@@ -8,22 +7,25 @@ import java.util.ArrayList;
 public class CardGame
 {
     // properties
-    Cards             fullPack;
-    ArrayList<Player> players;
-    ScoreCard         scoreCard;
-    Cards[]           cardsOnTable;
-    int               roundNo;
-    int               turnOfPlayer;
+    private Cards             fullPack;
+    private ArrayList<Player> players;
+    private ScoreCard         scoreCard;
+    private Card[]           cardsOnTable;
+    private int               roundNo;
+    private int               turnOfPlayer;
     
     // constructors
     public CardGame( Player p1, Player p2, Player p3, Player p4)
     {
-        int roundNo = 1; // Holding the roundNo
-        int turnOfPlayer = 1; // Player 1 is the first guy which will play so it is 1
+        
+        roundNo = 1; // Holding the roundNo
+        turnOfPlayer = 1; // Player 1 is the first guy which will play so it is 1
 
+        System.out.println(turnOfPlayer);
         // scoreCard = new ScoreCard(); !!!!! 
 
-        cardsOnTable = new Cards[4]; // there is 4 card. So for that array will hold only for card
+        cardsOnTable = new Card[4]; // there is 4 card. So for that array will hold only for card
+        
         // in each turn we will empty this array;
         
         fullPack = new Cards(true); 
@@ -42,22 +44,56 @@ public class CardGame
     // methods
     public boolean playTurn( Player p, Card c)
     {
-        // Todo
-        return false;
+        cardsOnTable [turnOfPlayer - 1] = c;
+        turnOfPlayer++;
+        // After the playing of the 4th memeber I am checking whether turn ended or not
+        if(turnOfPlayer > 4)
+        {
+            turnOfPlayer = 1;
+            roundNo++;
+            int bigest = cardsOnTable[0].getFaceValue();
+            int index = 0;
+            
+            System.out.println("FACED VALUE OF THE "  + 0 + " IS " + cardsOnTable[0]. getFaceValue());
+
+            for(int a = 1; a < cardsOnTable.length; a++)
+            {
+                System.out.println("FACED VALUE OF THE "  + a + " IS " + cardsOnTable[a]. getFaceValue());
+
+                if(cardsOnTable[a].getFaceValue() > bigest)
+                {
+                    bigest = scoreCard.scores[a];
+                    index = a;
+                }
+            }
+
+            scoreCard.update(index, 1);
+            
+        }
+
+        System.out.println(showScoreCard());
+        return true;
     }
     
     public boolean isTurnOf(Player p)
     {
-        if((roundNo % 4 ) + 1 == p. )
+        
+        for(int a = 0; a < players.size(); a++)
         {
-            
+            if( p == players.get(a) &&  a + 1 == turnOfPlayer)
+            {
+                return true;
+            }
         }
+
         return false;
     }
     
     public boolean isGameOver()
     {
-        if(fullPack.valid >= 0)
+
+        System.out.println(fullPack.valid);
+        if(fullPack.valid > 52)
         {
             return true;
         }
@@ -66,6 +102,7 @@ public class CardGame
     
     public int getScore( int playerNumber)
     {
+        System.out.println();
         return scoreCard.getScore(playerNumber);
     }
     
@@ -82,15 +119,13 @@ public class CardGame
     
     public int getTurnOfPlayerNo()
     {
-        // ToDo
-        return -1;
+        return turnOfPlayer ; // returning the turnOfPlayer
     }
     
     public Player[] getWinners()
     {
         Player [] winners = new Player[scoreCard.getWinners().length];
         
-
         scoreCard.getWinners();
     }
     

@@ -22,6 +22,9 @@ public class Cards
         
         if ( fullPack)
             createFullPackOfCards();
+
+        
+        shuffle();
     }
     
     // methods
@@ -33,9 +36,9 @@ public class Cards
             return null;
         else
         {
-            valid--;
             tmp = cards[valid];
             cards[valid] = null;
+            valid--;
             return tmp;
         }
     }
@@ -72,12 +75,12 @@ public class Cards
 
             cards[randIndex]= cards[i];
             cards[i]= temporary;
-            
         }
     }
     
     
     // For testOnly... remove from production version!
+    
     public void testOnlyPrint()
     {
         for ( int i =0; i < valid; i++)

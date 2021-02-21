@@ -12,7 +12,8 @@ public class Player
     // constructors
     public Player( String name)
     {
-        // ToDo
+        this.name = name;
+        hand = new Cards(true);
     }
     
     // methods
@@ -23,13 +24,13 @@ public class Player
     
     public void add( Card c)
     {
-        // ToDo
+        hand.addTopCard(c);
     }
     
+    // Playing the topCard of his pile
     public Card playCard()
     {
-        // ToDo
-        return null;
+        return hand.getTopCard() ;
     }
     
 } // end class Player

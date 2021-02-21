@@ -30,10 +30,10 @@ public class MyCardGame
         // PROGRAM CODE
 
         // create players...
-        p1 = new Player( "p1");
-        p2 = new Player( "p2");
-        p3 = new Player( "p3");
-        p4 = new Player( "p4");
+        p1 = new Player("p1");
+        p2 = new Player("p2");
+        p3 = new Player("p3");
+        p4 = new Player("p4");
         
         // create game with the 4 players...
         game = new CardGame( p1, p2, p3, p4);
@@ -58,26 +58,42 @@ public class MyCardGame
             selection = scan.nextInt();
             
             // process selection
-            if ( selection == MENU_PLAY_P1 )
-                play( p1, game);
+            if ( selection == MENU_PLAY_P1 && game.isTurnOf(p1))
+            {
+                play(p1, game);
+            }
+               
             
-            else if ( selection == MENU_PLAY_P2 )
+            else if ( selection == MENU_PLAY_P2 && game.isTurnOf(p2) )
+            {
                 play( p2, game);
+            }
+                
             
-            else if ( selection == MENU_PLAY_P3 )
+            else if ( selection == MENU_PLAY_P3 && game.isTurnOf(p3))
+            {
                 play( p3, game);
-            
-            else if ( selection == MENU_PLAY_P4 )
+            }
+               
+            else if ( selection == MENU_PLAY_P4 && game.isTurnOf(p4))
+            {
                 play( p4, game);
+            }
+               
             
             else if ( selection == MENU_SCORES )
-                // ToDo ~ System.out.println( game.showScoreCard() );
-                System.out.println( "ToDo..." );
+            {
+                System.out.println(game.showScoreCard());
+            }
+               
             
             else if ( selection != MENU_EXIT)
+            {
                 System.out.println( "Invalid selection! \n" );
-            
-        } while ( selection != MENU_EXIT);
+            }
+                
+
+        } while ( selection != MENU_EXIT && !game.isGameOver());
 
         // display winners...
         // ToDo ~ game.isGameOver(); ? game.getWinners(); 
@@ -93,10 +109,12 @@ public class MyCardGame
     // return accepted.
     private static boolean play( Player p, CardGame game)
     {
-        Card       c;
-        boolean    accepted;
+        Card c = p.playCard();
+        boolean accepted;
         
-        accepted = false;  // ToDo...
+        accepted = false; 
+
+        game.playTurn(p, c);
 
         return accepted;
     }

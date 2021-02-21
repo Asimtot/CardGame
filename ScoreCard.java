@@ -1,9 +1,10 @@
 package cardgame;
 
-// ScoreCard - Maintains one integer score per player, for any number of players
-//             Caution: invalid playernumbers result in run-time exception!
-// author:
-// date:
+/** ScoreCard - Maintains one integer score per player, for any number of players
+    Caution: invalid playernumbers result in run-time exception!
+    @author: 
+    date:
+*/ 
 public class ScoreCard
 {
     // properties
@@ -49,8 +50,8 @@ public class ScoreCard
     
     public int[] getWinners()
     {
-        // ToDo
+
         return null;
     }
     
-} // end class ScoreCard
+} 
