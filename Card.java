@@ -1,7 +1,7 @@
 package cardgame;
 
 /**
- * Card - a single playing card
+ * Card - a single playing card- Değişiklik denemesi (Emre)
  * @author
  * @version
  */
